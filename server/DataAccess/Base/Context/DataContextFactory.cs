@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace DataAccess.Base.Context
@@ -7,8 +8,13 @@ namespace DataAccess.Base.Context
     {
         public DataContext CreateDbContext(string[] args)
         {
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")
+                ?? throw new InvalidOperationException(
+                    "DB_CONNECTION_STRING environment variable is not set. " +
+                    "Set it before running EF Core migrations.");
+
             var builder = new DbContextOptionsBuilder<DataContext>();
-            builder.UseSqlServer("Server=localhost,1433; Database=BudgetMonitor; User=sa; Password=REDACTED_DB_PASSWORD");
+            builder.UseSqlServer(connectionString);
             return new DataContext(builder.Options);
         }
     }

@@ -39,7 +39,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            IronPdf.License.LicenseKey = "REDACTED_IRONPDF_KEY";
+            IronPdf.License.LicenseKey = Configuration["IronPdfLicenseKey"];
             services.AddDbContext<DataContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

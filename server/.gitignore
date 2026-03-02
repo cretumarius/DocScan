@@ -403,3 +403,7 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# Sensitive configuration — copy appsettings.example.json and fill in real values
+appsettings.Development.json
+appsettings.Local.json

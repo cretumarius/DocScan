@@ -15,8 +15,8 @@ import * as Keychain from 'react-native-keychain';
 
 const LoginScreen = ({ navigation }: any) => {
   const [data, setData] = React.useState({
-    username: 'REDACTED_EMAIL',
-    password: 'REDACTED_PASSWORD',
+    username: '',
+    password: '',
     check_textInputChange: false,
     secureTextEntry: true,
     isValidUser: true,
